@@ -8,7 +8,9 @@ const Stack = createNativeStackNavigator();
 
 const HistoryStack: FC = () => {
   return (
-    <Stack.Navigator initialRouteName="History">
+    <Stack.Navigator
+      initialRouteName="History"
+      screenOptions={{headerShown: false}}>
       <Stack.Screen name="History" component={HistoryScreen} />
     </Stack.Navigator>
   );

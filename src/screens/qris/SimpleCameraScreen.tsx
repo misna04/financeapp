@@ -1,6 +1,6 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View, Linking} from 'react-native';
 import {Text, Card, Button, Icon} from '@rneui/themed';
-import React, {FC, useCallback, useState} from 'react';
+import React, {FC, useCallback, useState, useEffect} from 'react';
 import {Camera, CameraPermissionStatus} from 'react-native-vision-camera';
 
 const SimpleCameraScreen: FC = () => {
@@ -27,6 +27,12 @@ const SimpleCameraScreen: FC = () => {
     setCameraPermissionStatus(permission);
   }, []);
 
+  useEffect(() => {
+    requestCameraPermission();
+    requestMicrophonePermission();
+  }, [cameraPermissionStatus, microphonePermissionStatus]);
+
+  console.log('cameraPermissionStatus', cameraPermissionStatus);
   return <ScrollView></ScrollView>;
 };
 

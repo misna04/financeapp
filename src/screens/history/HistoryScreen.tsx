@@ -1,14 +1,18 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import React, {FC} from 'react';
 
 const HistoryScreen: FC = () => {
   return (
-    <View>
+    <ScrollView style={styles.container}>
       <Text>HistoryScreen</Text>
-    </View>
+    </ScrollView>
   );
 };
 
 export default HistoryScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+  },
+});

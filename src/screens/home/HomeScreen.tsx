@@ -40,54 +40,63 @@ const HomeScreen: FC = () => {
         />
       </SafeAreaProvider>
 
-      <Card containerStyle={styles.cardContainer}>
-        <Card.Title>Saldo Rekening Utama</Card.Title>
-        <View style={styles.viewContainer}>
-          <Text style={styles.textCenter}>Rp. 00000000</Text>
-          <Ionicons name="eye-outline" color={'#fa8444'} size={24} />
-          <Ionicons name="eye-off-outline" color={'#fa8444'} size={24} />
-        </View>
-        <Button
-          buttonStyle={styles.btnStyle}
-          titleStyle={styles.btnTitleStyle}
-          containerStyle={styles.btnContainerStyle}
-          title="Rekening Lain"
-          type="outline"
-          size="sm"
-        />
-      </Card>
+      <View style={styles.sectionContainer}>
+        {/* card balance */}
+        <Card containerStyle={styles.cardContainer}>
+          <Card.Title>Saldo Rekening Utama</Card.Title>
+          <View style={styles.viewContainer}>
+            <Text style={styles.textCenter}>Rp. 00000000</Text>
+            <Ionicons name="eye-outline" color={'#fa8444'} size={24} />
+            <Ionicons name="eye-off-outline" color={'#fa8444'} size={24} />
+          </View>
+          <Button
+            buttonStyle={styles.btnStyle}
+            titleStyle={styles.btnTitleStyle}
+            containerStyle={styles.btnContainerStyle}
+            title="Rekening Lain"
+            type="outline"
+            size="sm"
+          />
+        </Card>
 
-      <View style={styles.menuContainer}>
-        <View style={styles.menuCardContainer}>
-          <Card containerStyle={styles.menuCard}>
-            <Ionicons
-              name="swap-horizontal-outline"
-              color={'#fa8444'}
-              size={24}
-            />
-          </Card>
-          <Text>Transfer</Text>
+        {/* list menu */}
+        <View style={styles.menuContainer}>
+          <View style={styles.menuCardContainer}>
+            <Card containerStyle={styles.menuCard}>
+              <Ionicons
+                name="swap-horizontal-outline"
+                color={'#fa8444'}
+                size={24}
+              />
+            </Card>
+            <Text>Transfer</Text>
+          </View>
+
+          <View style={styles.menuCardContainer}>
+            <Card containerStyle={styles.menuCard}>
+              <Ionicons name="wallet-outline" color={'#fa8444'} size={24} />
+            </Card>
+            <Text>E-Wallet</Text>
+          </View>
+
+          <View style={styles.menuCardContainer}>
+            <Card containerStyle={styles.menuCard}>
+              <Ionicons name="receipt-outline" color={'#fa8444'} size={24} />
+            </Card>
+            <Text>Pembayaran</Text>
+          </View>
+
+          <View style={styles.menuCardContainer}>
+            <Card containerStyle={styles.menuCard}>
+              <Ionicons name="grid-outline" color={'#fa8444'} size={24} />
+            </Card>
+            <Text>More</Text>
+          </View>
         </View>
 
-        <View style={styles.menuCardContainer}>
-          <Card containerStyle={styles.menuCard}>
-            <Ionicons name="wallet-outline" color={'#fa8444'} size={24} />
-          </Card>
-          <Text>E-Wallet</Text>
-        </View>
-
-        <View style={styles.menuCardContainer}>
-          <Card containerStyle={styles.menuCard}>
-            <Ionicons name="receipt-outline" color={'#fa8444'} size={24} />
-          </Card>
-          <Text>Pembayaran</Text>
-        </View>
-
-        <View style={styles.menuCardContainer}>
-          <Card containerStyle={styles.menuCard}>
-            <Ionicons name="grid-outline" color={'#fa8444'} size={24} />
-          </Card>
-          <Text>More</Text>
+        {/* list promos */}
+        <View style={styles.promoSection}>
+          <Text h4>Promo & Informasi</Text>
         </View>
       </View>
     </ScrollView>
@@ -99,6 +108,9 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
+  },
+  sectionContainer: {
+    marginHorizontal: 25,
   },
   heading: {
     color: 'white',
@@ -154,8 +166,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,
+    backgroundColor: '#fed0b7',
   },
   menuCardContainer: {
     alignItems: 'center',
+  },
+  promoSection: {
+    marginTop: 10,
   },
 });

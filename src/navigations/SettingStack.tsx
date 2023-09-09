@@ -8,7 +8,9 @@ const Stack = createNativeStackNavigator();
 
 const SettingStack: FC = () => {
   return (
-    <Stack.Navigator initialRouteName="Setting">
+    <Stack.Navigator
+      initialRouteName="Setting"
+      screenOptions={{headerShown: false}}>
       <Stack.Screen name="Setting" component={SettingScreen} />
     </Stack.Navigator>
   );
