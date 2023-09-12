@@ -97,6 +97,38 @@ const HomeScreen: FC = () => {
         {/* list promos */}
         <View style={styles.promoSection}>
           <Text h4>Promo & Informasi</Text>
+          <View style={styles.flexContainer}>
+            <Card containerStyle={styles.containerCardPromo}>
+              <View style={styles.headflex}>
+                <Text style={styles.txtHead}>Meta Stone</Text>
+                <Text style={styles.txtHead}>36</Text>
+              </View>
+              <View style={styles.headflex}>
+                <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
+                <Text style={styles.txtContent}>2.51</Text>
+              </View>
+            </Card>
+            <Card containerStyle={styles.containerCardPromo}>
+              <View style={styles.headflex}>
+                <Text style={styles.txtHead}>Meta Stone</Text>
+                <Text style={styles.txtHead}>36</Text>
+              </View>
+              <View style={styles.headflex}>
+                <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
+                <Text style={styles.txtContent}>2.51</Text>
+              </View>
+            </Card>
+            <Card containerStyle={styles.containerCardPromo}>
+              <View style={styles.headflex}>
+                <Text style={styles.txtHead}>Meta Stone</Text>
+                <Text style={styles.txtHead}>36</Text>
+              </View>
+              <View style={styles.headflex}>
+                <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
+                <Text style={styles.txtContent}>2.51</Text>
+              </View>
+            </Card>
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -173,5 +205,26 @@ const styles = StyleSheet.create({
   },
   promoSection: {
     marginTop: 10,
+  },
+  containerCardPromo: {
+    borderRadius: 25,
+    padding: 25,
+    width: '100%',
+  },
+  headflex: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 5,
+  },
+  txtHead: {
+    fontWeight: 'bold',
+  },
+  txtContent: {
+    fontWeight: '500',
+  },
+  flexContainer: {
+    display: 'flex',
+    // flexDirection: 'row',
   },
 });

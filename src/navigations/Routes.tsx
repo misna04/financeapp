@@ -8,7 +8,8 @@ import HistoryStackScreen from './HistoryStack';
 // import QrisStackScreen from './QrisStack';
 import FavoriteStackScreen from './FavoriteStack';
 import SettingStackScreen from './SettingStack';
-import SimpleCameraScreen from 'screens/qris/SimpleCameraScreen';
+// import SimpleCameraScreen from 'screens/qris/SimpleCameraScreen';
+import ScanCameraScreen from 'screens/cameras/ScanCameraScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -48,7 +49,7 @@ const Routes: FC = () => {
       <Tab.Screen name="History" component={HistoryStackScreen} />
       <Tab.Screen
         name="QRIS"
-        component={SimpleCameraScreen}
+        component={ScanCameraScreen}
         options={{
           tabBarActiveTintColor: active,
           tabBarInactiveTintColor: inactive,
