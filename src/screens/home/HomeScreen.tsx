@@ -1,4 +1,10 @@
-import {ScrollView, StyleSheet, View, TouchableOpacity} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import {
   Text,
   Card,
@@ -6,132 +12,187 @@ import {
   Header as HeaderRNE,
   HeaderProps,
   Icon,
+  Avatar,
 } from '@rneui/themed';
 import React, {FC} from 'react';
 // import {TouchableOpacity} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+const screenWidth = Dimensions.get('window').width;
 const HomeScreen: FC = () => {
   return (
-    <ScrollView style={styles.container}>
-      <SafeAreaProvider>
-        <HeaderRNE
-          backgroundColor="white"
-          leftComponent={{
-            icon: 'menu',
-            color: '#fa8444',
-          }}
-          rightComponent={
-            <View style={styles.headerRight}>
-              <TouchableOpacity>
+    <>
+      <ScrollView style={styles.container} stickyHeaderIndices={[0]}>
+        <SafeAreaProvider>
+          <HeaderRNE
+            backgroundColor="white"
+            leftComponent={{
+              icon: 'menu',
+              color: '#fa8444',
+            }}
+            rightComponent={
+              <View style={styles.headerRight}>
+                <TouchableOpacity>
+                  <Ionicons
+                    name="notifications-outline"
+                    color={'#fa8444'}
+                    size={24}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity style={{marginLeft: 10}}>
+                  <Ionicons
+                    name="log-out-outline"
+                    color={'#fa8444'}
+                    size={24}
+                  />
+                </TouchableOpacity>
+              </View>
+            }
+            // centerComponent={{text: 'Header', style: styles.heading}}
+          />
+        </SafeAreaProvider>
+
+        <View style={styles.sectionContainer}>
+          {/* card balance */}
+          <Card containerStyle={styles.cardContainer}>
+            <Card.Title>Saldo Rekening Utama</Card.Title>
+            <View style={styles.viewContainer}>
+              <Text style={styles.textCenter}>Rp. 00000000</Text>
+              <Ionicons name="eye-outline" color={'#fa8444'} size={24} />
+              <Ionicons name="eye-off-outline" color={'#fa8444'} size={24} />
+            </View>
+            <Button
+              buttonStyle={styles.btnStyle}
+              titleStyle={styles.btnTitleStyle}
+              containerStyle={styles.btnContainerStyle}
+              title="Rekening Lain"
+              type="outline"
+              size="sm"
+            />
+          </Card>
+
+          {/* list menu */}
+          <View style={styles.menuContainer}>
+            <View style={styles.menuCardContainer}>
+              <Card containerStyle={styles.menuCard}>
                 <Ionicons
-                  name="notifications-outline"
+                  name="swap-horizontal-outline"
                   color={'#fa8444'}
                   size={24}
                 />
-              </TouchableOpacity>
-              <TouchableOpacity style={{marginLeft: 10}}>
-                <Ionicons name="log-out-outline" color={'#fa8444'} size={24} />
-              </TouchableOpacity>
+              </Card>
+              <Text>Transfer</Text>
             </View>
-          }
-          // centerComponent={{text: 'Header', style: styles.heading}}
-        />
-      </SafeAreaProvider>
 
-      <View style={styles.sectionContainer}>
-        {/* card balance */}
-        <Card containerStyle={styles.cardContainer}>
-          <Card.Title>Saldo Rekening Utama</Card.Title>
-          <View style={styles.viewContainer}>
-            <Text style={styles.textCenter}>Rp. 00000000</Text>
-            <Ionicons name="eye-outline" color={'#fa8444'} size={24} />
-            <Ionicons name="eye-off-outline" color={'#fa8444'} size={24} />
+            <View style={styles.menuCardContainer}>
+              <Card containerStyle={styles.menuCard}>
+                <Ionicons name="wallet-outline" color={'#fa8444'} size={24} />
+              </Card>
+              <Text>E-Wallet</Text>
+            </View>
+
+            <View style={styles.menuCardContainer}>
+              <Card containerStyle={styles.menuCard}>
+                <Ionicons name="receipt-outline" color={'#fa8444'} size={24} />
+              </Card>
+              <Text>Pembayaran</Text>
+            </View>
+
+            <View style={styles.menuCardContainer}>
+              <Card containerStyle={styles.menuCard}>
+                <Ionicons name="grid-outline" color={'#fa8444'} size={24} />
+              </Card>
+              <Text>More</Text>
+            </View>
           </View>
-          <Button
-            buttonStyle={styles.btnStyle}
-            titleStyle={styles.btnTitleStyle}
-            containerStyle={styles.btnContainerStyle}
-            title="Rekening Lain"
-            type="outline"
-            size="sm"
-          />
-        </Card>
 
-        {/* list menu */}
-        <View style={styles.menuContainer}>
-          <View style={styles.menuCardContainer}>
-            <Card containerStyle={styles.menuCard}>
+          {/* list promos */}
+          <View style={styles.childContainerStyle}>
+            <View style={styles.flexHeader}>
+              <Text h4>Promos & Information</Text>
               <Ionicons
-                name="swap-horizontal-outline"
-                color={'#fa8444'}
+                name="arrow-forward-outline"
                 size={24}
+                color={'#fa8444'}
               />
-            </Card>
-            <Text>Transfer</Text>
+            </View>
+
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <Card containerStyle={styles.containerCardPromo}>
+                <View style={styles.headflex}>
+                  <Text style={styles.txtHead}>Meta Stone</Text>
+                  <Text style={styles.txtHead}>36</Text>
+                </View>
+                <View style={styles.headflex}>
+                  <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
+                  <Text style={styles.txtContent}>2.51</Text>
+                </View>
+              </Card>
+              <Card containerStyle={styles.containerCardPromo}>
+                <View style={styles.headflex}>
+                  <Text style={styles.txtHead}>Meta Stone</Text>
+                  <Text style={styles.txtHead}>36</Text>
+                </View>
+                <View style={styles.headflex}>
+                  <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
+                  <Text style={styles.txtContent}>2.51</Text>
+                </View>
+              </Card>
+              <Card containerStyle={styles.containerCardPromo}>
+                <View style={styles.headflex}>
+                  <Text style={styles.txtHead}>Meta Stone</Text>
+                  <Text style={styles.txtHead}>36</Text>
+                </View>
+                <View style={styles.headflex}>
+                  <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
+                  <Text style={styles.txtContent}>2.51</Text>
+                </View>
+              </Card>
+            </ScrollView>
           </View>
 
-          <View style={styles.menuCardContainer}>
-            <Card containerStyle={styles.menuCard}>
-              <Ionicons name="wallet-outline" color={'#fa8444'} size={24} />
-            </Card>
-            <Text>E-Wallet</Text>
-          </View>
+          {/* send again / Favorite lists */}
+          <View style={styles.childContainerStyle}>
+            <View style={styles.flexHeader}>
+              <Text h4>Send Again</Text>
+              <Ionicons
+                name="ellipsis-horizontal-outline"
+                size={24}
+                color={'#fa8444'}
+              />
+            </View>
 
-          <View style={styles.menuCardContainer}>
-            <Card containerStyle={styles.menuCard}>
-              <Ionicons name="receipt-outline" color={'#fa8444'} size={24} />
-            </Card>
-            <Text>Pembayaran</Text>
-          </View>
-
-          <View style={styles.menuCardContainer}>
-            <Card containerStyle={styles.menuCard}>
-              <Ionicons name="grid-outline" color={'#fa8444'} size={24} />
-            </Card>
-            <Text>More</Text>
+            <View style={styles.avatarSection}>
+              <Avatar
+                size={64}
+                title="DN"
+                containerStyle={styles.avatarContainer}
+                titleStyle={styles.avatarTitle}
+              />
+              <Avatar
+                size={64}
+                title="SM"
+                containerStyle={styles.avatarContainer}
+                titleStyle={styles.avatarTitle}
+              />
+              <Avatar
+                size={64}
+                title="BB"
+                containerStyle={styles.avatarContainer}
+                titleStyle={styles.avatarTitle}
+              />
+              <Avatar
+                size={64}
+                title="JH"
+                containerStyle={styles.avatarContainer}
+                titleStyle={styles.avatarTitle}
+              />
+            </View>
           </View>
         </View>
-
-        {/* list promos */}
-        <View style={styles.promoSection}>
-          <Text h4>Promo & Informasi</Text>
-          <View style={styles.flexContainer}>
-            <Card containerStyle={styles.containerCardPromo}>
-              <View style={styles.headflex}>
-                <Text style={styles.txtHead}>Meta Stone</Text>
-                <Text style={styles.txtHead}>36</Text>
-              </View>
-              <View style={styles.headflex}>
-                <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
-                <Text style={styles.txtContent}>2.51</Text>
-              </View>
-            </Card>
-            <Card containerStyle={styles.containerCardPromo}>
-              <View style={styles.headflex}>
-                <Text style={styles.txtHead}>Meta Stone</Text>
-                <Text style={styles.txtHead}>36</Text>
-              </View>
-              <View style={styles.headflex}>
-                <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
-                <Text style={styles.txtContent}>2.51</Text>
-              </View>
-            </Card>
-            <Card containerStyle={styles.containerCardPromo}>
-              <View style={styles.headflex}>
-                <Text style={styles.txtHead}>Meta Stone</Text>
-                <Text style={styles.txtHead}>36</Text>
-              </View>
-              <View style={styles.headflex}>
-                <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
-                <Text style={styles.txtContent}>2.51</Text>
-              </View>
-            </Card>
-          </View>
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 };
 
@@ -141,8 +202,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
   },
+
   sectionContainer: {
     marginHorizontal: 25,
+    justifyContent: 'center',
   },
   heading: {
     color: 'white',
@@ -155,7 +218,7 @@ const styles = StyleSheet.create({
   headerRight: {
     display: 'flex',
     flexDirection: 'row',
-    marginTop: 5,
+    marginVertical: 5,
   },
   headerbg: {
     backgroundColor: 'red',
@@ -203,13 +266,13 @@ const styles = StyleSheet.create({
   menuCardContainer: {
     alignItems: 'center',
   },
-  promoSection: {
+  childContainerStyle: {
     marginTop: 10,
+    justifyContent: 'center',
   },
   containerCardPromo: {
     borderRadius: 25,
-    padding: 25,
-    width: '100%',
+    width: screenWidth / 1.5,
   },
   headflex: {
     display: 'flex',
@@ -223,8 +286,30 @@ const styles = StyleSheet.create({
   txtContent: {
     fontWeight: '500',
   },
-  flexContainer: {
+  // flexContainer: {
+  //   display: 'flex',
+  //   justifyContent: 'center',
+  //   // flexDirection: 'row',
+  // },
+  flexHeader: {
     display: 'flex',
-    // flexDirection: 'row',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  avatarContainer: {
+    backgroundColor: '#fed0b7',
+    borderRadius: 8,
+  },
+  avatarSection: {
+    marginVertical: 10,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
+  avatarTitle: {
+    color: '#fa8444',
   },
 });
