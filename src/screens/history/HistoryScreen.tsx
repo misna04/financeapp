@@ -19,27 +19,26 @@ const HistoryScreen: FC = () => {
       <SafeAreaProvider>
         <HeaderRNE
           backgroundColor="white"
-          leftComponent={{
-            icon: 'menu',
-            color: '#fa8444',
-          }}
+          // leftComponent={{
+          //   icon: 'menu',
+          //   color: '#fa8444',
+          // }}
           rightComponent={
             <View style={styles.headerRight}>
               <TouchableOpacity>
-                <Ionicons
-                  name="notifications-outline"
-                  color={'#fa8444'}
-                  size={24}
-                />
+                <Ionicons name="home-outline" color={'#fa8444'} size={24} />
               </TouchableOpacity>
-              {/* <TouchableOpacity style={{marginLeft: 10}}>
-                <Ionicons name="log-out-outline" color={'#fa8444'} size={24} />
-              </TouchableOpacity> */}
             </View>
           }
           centerComponent={{text: 'History', style: styles.heading}}
         />
       </SafeAreaProvider>
+
+      {/* filter section */}
+      <View style={styles.filterSection}>
+        <Text h4>Today</Text>
+        <Ionicons name="search-outline" size={24} color={'#fa8444'} />
+      </View>
 
       <View style={styles.sectionContainer}>
         {datas &&
@@ -52,6 +51,7 @@ const HistoryScreen: FC = () => {
                 <ListItem.Title>John Doe</ListItem.Title>
                 <ListItem.Subtitle>CEO, Example.com</ListItem.Subtitle>
               </ListItem.Content>
+              <Text>+800</Text>
             </ListItem>
           ))}
       </View>
@@ -87,6 +87,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fa8444',
     padding: 10,
     borderRadius: 8,
+  },
+  filterSection: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 10,
+    alignItems: 'center',
   },
 });
 

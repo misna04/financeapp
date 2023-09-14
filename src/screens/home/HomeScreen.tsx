@@ -15,7 +15,6 @@ import {
   Avatar,
 } from '@rneui/themed';
 import React, {FC} from 'react';
-// import {TouchableOpacity} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
