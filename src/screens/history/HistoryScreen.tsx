@@ -15,7 +15,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HistoryScreen: FC = () => {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} stickyHeaderIndices={[0]}>
       <SafeAreaProvider>
         <HeaderRNE
           backgroundColor="white"
