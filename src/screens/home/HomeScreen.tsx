@@ -122,36 +122,19 @@ const HomeScreen: FC = () => {
             </View>
 
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              <Card containerStyle={styles.containerCardPromo}>
-                <View style={styles.headflex}>
-                  <Text style={styles.txtHead}>Meta Stone</Text>
-                  <Text style={styles.txtHead}>36</Text>
-                </View>
-                <View style={styles.headflex}>
-                  <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
-                  <Text style={styles.txtContent}>2.51</Text>
-                </View>
-              </Card>
-              <Card containerStyle={styles.containerCardPromo}>
-                <View style={styles.headflex}>
-                  <Text style={styles.txtHead}>Meta Stone</Text>
-                  <Text style={styles.txtHead}>36</Text>
-                </View>
-                <View style={styles.headflex}>
-                  <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
-                  <Text style={styles.txtContent}>2.51</Text>
-                </View>
-              </Card>
-              <Card containerStyle={styles.containerCardPromo}>
-                <View style={styles.headflex}>
-                  <Text style={styles.txtHead}>Meta Stone</Text>
-                  <Text style={styles.txtHead}>36</Text>
-                </View>
-                <View style={styles.headflex}>
-                  <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
-                  <Text style={styles.txtContent}>2.51</Text>
-                </View>
-              </Card>
+              {datas &&
+                datas?.map((item, index) => (
+                  <Card containerStyle={styles.containerCardPromo} key={index}>
+                    <View style={styles.headflex}>
+                      <Text style={styles.txtHead}>Meta Stone</Text>
+                      <Text style={styles.txtHead}>36</Text>
+                    </View>
+                    <View style={styles.headflex}>
+                      <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
+                      <Text style={styles.txtContent}>2.51</Text>
+                    </View>
+                  </Card>
+                ))}
             </ScrollView>
           </View>
 
@@ -316,3 +299,22 @@ const styles = StyleSheet.create({
     color: '#fa8444',
   },
 });
+
+const datas = [
+  {
+    name: 'Meta Stone',
+    expired: false,
+  },
+  {
+    name: 'Meta Stone',
+    expired: false,
+  },
+  {
+    name: 'Meta Stone',
+    expired: false,
+  },
+  {
+    name: 'Meta Stone',
+    expired: false,
+  },
+];
