@@ -4,23 +4,22 @@ import {
   View,
   TouchableOpacity,
   Dimensions,
+  TouchableHighlight,
+  TouchableWithoutFeedback,
 } from 'react-native';
-import {
-  Text,
-  Card,
-  Button,
-  Header as HeaderRNE,
-  HeaderProps,
-  Icon,
-  Avatar,
-} from '@rneui/themed';
+import {Text, Card, Button, Header as HeaderRNE, Avatar} from '@rneui/themed';
 import React, {FC, useState} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const screenWidth = Dimensions.get('window').width;
-const HomeScreen: FC = () => {
+
+const HomeScreen: FC = ({navigation}: any) => {
   const [active, setActive] = useState<boolean>(true);
+
+  const onClickPromos = () => {
+    navigation.navigate('PromoDetail');
+  };
   return (
     <>
       <ScrollView style={styles.container} stickyHeaderIndices={[0]}>
@@ -124,16 +123,20 @@ const HomeScreen: FC = () => {
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               {datas &&
                 datas?.map((item, index) => (
-                  <Card containerStyle={styles.containerCardPromo} key={index}>
-                    <View style={styles.headflex}>
-                      <Text style={styles.txtHead}>Meta Stone</Text>
-                      <Text style={styles.txtHead}>36</Text>
-                    </View>
-                    <View style={styles.headflex}>
-                      <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
-                      <Text style={styles.txtContent}>2.51</Text>
-                    </View>
-                  </Card>
+                  <TouchableWithoutFeedback onPress={onClickPromos}>
+                    <Card
+                      containerStyle={styles.containerCardPromo}
+                      key={index}>
+                      <View style={styles.headflex}>
+                        <Text style={styles.txtHead}>Meta Stone</Text>
+                        <Text style={styles.txtHead}>36</Text>
+                      </View>
+                      <View style={styles.headflex}>
+                        <Text style={styles.txtContent}>1 x 23.5 VAT</Text>
+                        <Text style={styles.txtContent}>2.51</Text>
+                      </View>
+                    </Card>
+                  </TouchableWithoutFeedback>
                 ))}
             </ScrollView>
           </View>
@@ -264,7 +267,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    margin: 5,
+    padding: 5,
   },
   txtHead: {
     fontWeight: 'bold',
