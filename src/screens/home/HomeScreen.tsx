@@ -14,12 +14,13 @@ import {
   Icon,
   Avatar,
 } from '@rneui/themed';
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const screenWidth = Dimensions.get('window').width;
 const HomeScreen: FC = () => {
+  const [active, setActive] = useState<boolean>(true);
   return (
     <>
       <ScrollView style={styles.container} stickyHeaderIndices={[0]}>
@@ -55,11 +56,14 @@ const HomeScreen: FC = () => {
         <View style={styles.sectionContainer}>
           {/* card balance */}
           <Card containerStyle={styles.cardContainer}>
-            <Card.Title>Saldo Rekening Utama</Card.Title>
+            <Card.Title>Your Balance</Card.Title>
             <View style={styles.viewContainer}>
               <Text style={styles.textCenter}>Rp. 00000000</Text>
-              <Ionicons name="eye-outline" color={'#fa8444'} size={24} />
-              <Ionicons name="eye-off-outline" color={'#fa8444'} size={24} />
+              {active ? (
+                <Ionicons name="eye-off-outline" color={'#fa8444'} size={24} />
+              ) : (
+                <Ionicons name="eye-outline" color={'#fa8444'} size={24} />
+              )}
             </View>
             <Button
               buttonStyle={styles.btnStyle}
@@ -95,7 +99,7 @@ const HomeScreen: FC = () => {
               <Card containerStyle={styles.menuCard}>
                 <Ionicons name="receipt-outline" color={'#fa8444'} size={24} />
               </Card>
-              <Text>Pembayaran</Text>
+              <Text>Payment</Text>
             </View>
 
             <View style={styles.menuCardContainer}>
