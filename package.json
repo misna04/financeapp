@@ -15,9 +15,11 @@
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.13",
+    "@reduxjs/toolkit": "^1.9.6",
     "@rneui/base": "^4.0.0-rc.8",
     "@rneui/themed": "^4.0.0-rc.8",
     "@types/jest": "^29.5.4",
+    "axios": "^1.5.0",
     "expo-modules-core": "^1.5.11",
     "react": "18.2.0",
     "react-native": "0.72.4",
@@ -28,7 +30,8 @@
     "react-native-screens": "^3.25.0",
     "react-native-static-safe-area-insets": "^2.2.0",
     "react-native-vector-icons": "^10.0.0",
-    "react-native-vision-camera": "^3.0.0"
+    "react-native-vision-camera": "^3.0.0",
+    "redux": "^4.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

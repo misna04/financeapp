@@ -17,6 +17,10 @@ const screenWidth = Dimensions.get('window').width;
 const HomeScreen: FC = ({navigation}: any) => {
   const [active, setActive] = useState<boolean>(true);
 
+  const onClickAmount = () => {
+    setActive(!active);
+  };
+
   const onClickPromos = () => {
     navigation.navigate('PromoDetail');
   };
@@ -57,11 +61,23 @@ const HomeScreen: FC = ({navigation}: any) => {
           <Card containerStyle={styles.cardContainer}>
             <Card.Title>Your Balance</Card.Title>
             <View style={styles.viewContainer}>
-              <Text style={styles.textCenter}>Rp. 00000000</Text>
+              <Text style={styles.textCenter}>{`${
+                active ? 'Rp. 00000000' : '*****'
+              }`}</Text>
               {active ? (
-                <Ionicons name="eye-off-outline" color={'#fa8444'} size={24} />
+                <Ionicons
+                  name="eye-off-outline"
+                  color={'#fa8444'}
+                  size={24}
+                  onPress={onClickAmount}
+                />
               ) : (
-                <Ionicons name="eye-outline" color={'#fa8444'} size={24} />
+                <Ionicons
+                  name="eye-outline"
+                  color={'#fa8444'}
+                  size={24}
+                  onPress={onClickAmount}
+                />
               )}
             </View>
             <Button

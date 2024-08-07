@@ -1,83 +1,54 @@
-import React, {FC} from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {View, Text} from 'react-native';
+import React, {FC, useEffect} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeStackScreen from './HomeStack';
-import HistoryStackScreen from './HistoryStack';
-// import QrisStackScreen from './QrisStack';
-import FavoriteStackScreen from './FavoriteStack';
-import SettingStackScreen from './SettingStack';
-// import SimpleCameraScreen from 'screens/qris/SimpleCameraScreen';
-import ScanCameraScreen from 'screens/cameras/ScanCameraScreen';
+import LoggedInStack from './LoggedInStack'
+import NotLoggedInStack from './NotLoggedInStack'
 
-const Tab = createBottomTabNavigator();
-
-const active = '#fa8444';
-const inactive = '#c4c5c9';
+const Stack = createNativeStackNavigator();
 
 const Routes: FC = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [userToken, setUserToken] = React.useState(null);
+
+  const getUserToken = async () => {
+    // testing purposes
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    try {
+      // custom logic
+      await sleep(2000);
+      const token = null;
+      setUserToken(token);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  React.useEffect(() => {
+    getUserToken();
+  }, []);
+
+  if (isLoading) {
+    // We haven't finished checking for the token yet
+    return <SplashScreen />;
+  }
   return (
-    <Tab.Navigator
-      screenOptions={({route}) => ({
-        headerShown: false,
-        tabBarIcon: ({focused, color, size}) => {
-          let iconName;
-
-          if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'Settings') {
-            iconName = focused ? 'settings' : 'settings-outline';
-          }
-          // else if (route.name === 'QRIS') {
-          //   iconName = focused ? 'qr-code' : 'qr-code-outline';
-          //   size = 40;
-          // }
-          else if (route.name === 'History') {
-            iconName = focused ? 'time' : 'time-outline';
-          } else if (route.name === 'Favorite') {
-            iconName = focused ? 'star' : 'star-outline';
-          }
-
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: active,
-        tabBarInactiveTintColor: inactive,
-      })}>
-      <Tab.Screen name="Home" component={HomeStackScreen} />
-      <Tab.Screen name="History" component={HistoryStackScreen} />
-      <Tab.Screen
-        name="QRIS"
-        component={ScanCameraScreen}
-        options={{
-          tabBarActiveTintColor: active,
-          tabBarInactiveTintColor: inactive,
-          tabBarLabel: '',
-          tabBarIcon: ({focused, color}) => (
-            <View
-              style={{
-                position: 'absolute',
-                bottom: 10, // space from bottombar
-                height: 58,
-                width: 58,
-                borderRadius: 58,
-                backgroundColor: focused ? active : inactive,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Ionicons
-                name={focused ? 'qr-code' : 'qr-code-outline'}
-                size={45}
-                color={'white'}
-              />
-            </View>
-          ),
-        }}
-      />
-      <Tab.Screen name="Favorite" component={FavoriteStackScreen} />
-      <Tab.Screen name="Settings" component={SettingStackScreen} />
-    </Tab.Navigator>
+      <Stack.Navigator>
+        {userToken == null ? (
+          // No token found, user isn't signed in
+          <Stack.Screen
+            name="SignIn"
+            component={NotLoggedInStack}
+            options={{
+              title: 'Sign in',
+            }}
+            initialParams={{ setUserToken }}
+          />
+        ) : (
+          // User is signed in
+          <Stack.Screen name="Home" component={LoggedInStack} />
+        )}
+      </Stack.Navigator>
   );
 };
 
